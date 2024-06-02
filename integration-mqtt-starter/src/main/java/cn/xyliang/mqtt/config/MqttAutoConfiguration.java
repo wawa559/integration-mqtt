@@ -115,7 +115,10 @@ public class MqttAutoConfiguration implements ApplicationContextAware, BeanPostP
 		messageProducerBuilder
 				.addConstructorArgValue(mqttPahoClientFactorySetting().mqttClientFactory(channelName, config, true));
 		messageProducerBuilder.addConstructorArgValue(config.getTopics());
-		messageProducerBuilder.addPropertyValue("converter", new DefaultPahoMessageConverter());
+		// 2024-06-02 改变接收形式为字节流
+		DefaultPahoMessageConverter converter = new DefaultPahoMessageConverter();
+		converter.setPayloadAsBytes(true);
+		messageProducerBuilder.addPropertyValue("converter", converter);
 		messageProducerBuilder.addPropertyValue("qos", config.getQos());
 		messageProducerBuilder.addPropertyValue("outputChannel", mqttChannel);
 

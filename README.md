@@ -157,3 +157,7 @@ MqttUtils工具类中封装了多个发送消息的方法
 
 * 添加配置：automatic-reconnect自动连接，clean-session断开是否清除session，max-inflight，mqtt-version，配置方式见上面的配置块文档
 * 添加MqttPahoClientFactorySettingCallback，注册为spring的bean则会自动生效，用于配置时的回调，可进行自定义配置MqttConnectOptions，例如配置ssl等
+
+## 2024-06-25 13:55 
+
+* 改变消息接收为字节流形式
